@@ -1,0 +1,176 @@
+package pack;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class myFrame extends JFrame {
+	//global variables declaration
+	JPanel mainPan = new JPanel();
+	JPanel genderPan = new JPanel() ;
+	JPanel hobbyPan = new JPanel() ;
+	JPanel datePan = new JPanel() ;
+	JPanel langPan = new JPanel() ;
+	JLabel nameLab = new JLabel("Nom الاسم");
+	JLabel passLab = new JLabel("Password");
+	JLabel langLab = new JLabel("Langue");
+	JLabel genderLab = new JLabel("Sexe");
+	JLabel dateLab = new JLabel("Date de naissance");
+	JLabel adrsLab = new JLabel("Adresse");
+	JLabel cityLab = new JLabel("Ville");
+	JLabel picLab = new JLabel("Photo");
+	JLabel hobbyLab = new JLabel("Loisirs");
+	JTextField nameField = new JTextField();
+	JPasswordField passField = new JPasswordField();
+	ImageIcon tunisia = new ImageIcon("C:/images/tunisia.jpg");
+	Image image1 = tunisia.getImage();
+	Image img1 = image1.getScaledInstance(100, 150,java.awt.Image.SCALE_SMOOTH);
+    ImageIcon tunMap = new ImageIcon(img1);
+    JLabel map = new JLabel(tunMap);
+    String [] options2 = new String []{"Tunis","Sousse","Kairouan","Bizerte","Gabes","Ariana","Gafsa","Mounastir","Ben Arous","Kasserine","Medenine","Nabeul","Tataouine","Beja","Kef","Mehdia","Sidi Bouzid","Tozeur","Manouba","Siliana","Zaghouan","Kebili"};
+    JList citiesTun = new JList(options2);
+    JComboBox cities = new JComboBox();
+	JRadioButton maleOp = new JRadioButton("Male");
+	JRadioButton femaleOp = new JRadioButton("Female");
+	ButtonGroup bg = new ButtonGroup();
+	JCheckBox Op1 = new JCheckBox("Java");
+	JCheckBox Op2 = new JCheckBox("Foot");
+	JCheckBox Op3 = new JCheckBox("Musique");
+	JCheckBox Op4 = new JCheckBox("Cuisine");
+	JCheckBox Op5 = new JCheckBox("Voyage");
+	JButton picBut = new JButton("Choisir une photo");
+	JButton validateBut = new JButton("Valider");
+	JButton cancelBut = new JButton("Annuler");
+    JTextArea address = new JTextArea();
+    JLabel separator1 = new JLabel("/");
+    JLabel separator2 = new JLabel("/");
+	public myFrame()
+    {
+    this.setSize(870,728);
+    this.setResizable(true);
+    this.setTitle("Mon premier projet");
+	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	this.add(mainPan,BorderLayout.CENTER);
+    genderPan.setLayout(new FlowLayout());
+    hobbyPan.setLayout(new FlowLayout());
+    langPan.setLayout(new FlowLayout());
+    mainPan.setLayout(new FlowLayout());
+  
+    JComboBox day = new JComboBox();
+    for(int i=1; i<32;i++)
+    	day.addItem(i);
+    JComboBox month = new JComboBox();
+    for(int i=1; i<12;i++)
+    	month.addItem(i);
+    JComboBox year = new JComboBox();
+    for(int i=1; i<80;i++)
+        year.addItem(1940+i);
+    genderPan.add(maleOp);
+    genderPan.add(femaleOp);
+    cities.addItem("Tunis");
+    cities.addItem("Sfax");
+    cities.addItem("Sousse");
+    cities.addItem("Kairouan");
+    cities.addItem("Bizerte");
+    cities.addItem("Gabes");
+    cities.addItem("Ariana");
+    cities.addItem("Gafsa");
+    cities.addItem("Monastir");
+    cities.addItem("Ben Arous");
+    cities.addItem("Kasserine");
+    cities.addItem("Medenine");
+    cities.addItem("Nabeul");
+    cities.addItem("Tataouine");
+    cities.addItem("Beja");
+    cities.addItem("Kef");
+    cities.addItem("Mehdia");
+    cities.addItem("Sidi Bouzid");
+    cities.addItem("Tozeur");
+    cities.addItem("Menouba");
+    cities.addItem("Siliana");
+    cities.addItem("Zaghouan");
+    cities.addItem("Kebili");
+    hobbyPan.add(Op1);
+    hobbyPan.add(Op2);
+    hobbyPan.add(Op3);
+    hobbyPan.add(Op4);
+    hobbyPan.add(Op5);
+    langPan.add(langLab);
+    bg.add(maleOp);
+    bg.add(femaleOp);
+    datePan.add(day);
+    datePan.add(separator1);
+    datePan.add(month);
+    datePan.add(separator2);
+    datePan.add(year);
+    nameLab.setPreferredSize(new Dimension (320,40));
+    nameField.setPreferredSize(new Dimension (520,40));
+    nameLab.setFont(new Font ("Arial",Font.BOLD,18));
+    nameField.setFont(new Font ("Arial",Font.BOLD,18));
+    nameLab.setOpaque(true);
+	nameLab.setBackground(Color.cyan);
+	nameLab.setForeground(Color.white);
+	nameField.setSelectedTextColor(Color.red);
+	nameField.setBackground(Color.green);
+	String [] options1=new String []{"Arabe","Français","Anglais","Italien"};
+    JList language=new JList(options1);
+    language.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    language.setSelectionForeground(Color.red);
+    citiesTun.setSelectionForeground(Color.red);
+    citiesTun.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+    JScrollPane scroll1 = new JScrollPane (address,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scroll1.setPreferredSize(new Dimension (520,50));
+    JScrollPane scroll2 = new JScrollPane (citiesTun,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll2.setPreferredSize(new Dimension (520,150));
+    JScrollPane scroll3 = new JScrollPane (language,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll3.setPreferredSize(new Dimension (520,60));
+    langLab.setPreferredSize(new Dimension (320,30));
+    passLab.setPreferredSize(new Dimension (320,30));
+	passField.setPreferredSize(new Dimension (520,30));
+	mainPan.add(nameLab);
+	mainPan.add(nameField);
+	mainPan.add(passLab);
+	mainPan.add(passField);
+    mainPan.add(langLab);
+    mainPan.add(scroll3);
+    mainPan.add(genderLab);
+    mainPan.add(genderPan);
+	genderLab.setPreferredSize(new Dimension (320,30));
+	genderPan.setPreferredSize(new Dimension (520,30));
+	mainPan.add(dateLab);
+	mainPan.add(datePan);
+	dateLab.setPreferredSize(new Dimension (320,20));
+	datePan.setPreferredSize(new Dimension (520,30));
+	mainPan.add(cityLab);
+	mainPan.add(cities);
+	cityLab.setPreferredSize(new Dimension (320,30));
+	cities.setPreferredSize(new Dimension (520,30));
+	mainPan.add(cityLab);
+	mainPan.add(cities);
+	mainPan.add(map);
+	mainPan.add(scroll2);
+	map.setPreferredSize(new Dimension (320,300));
+	citiesTun.setPreferredSize(new Dimension (520,180));
+	mainPan.add(adrsLab);
+	mainPan.add(scroll1);
+	adrsLab.setPreferredSize(new Dimension (320,30));
+	address.setPreferredSize(new Dimension (520,70));
+	mainPan.add(picLab);
+	mainPan.add(picBut);
+	picLab.setPreferredSize(new Dimension (320,30));
+	picBut.setPreferredSize(new Dimension (520,30));
+	mainPan.add(validateBut);
+	mainPan.add(cancelBut);
+	validateBut.setPreferredSize(new Dimension (320,30));
+	cancelBut.setPreferredSize(new Dimension (520,30));
+	picBut.setPreferredSize(new Dimension (520,30));
+    picBut.addActionListener(new ActionListener() {
+		public void actionPerformed (ActionEvent e)
+		{JFileChooser fch = new JFileChooser();
+		fch.showOpenDialog(picBut);}}
+		);
+    this.setVisible(true);
+    }
+	  public static void main(String[] args) 
+	    {
+	    	myFrame f = new myFrame();
+	    }
+    }
